@@ -1,0 +1,1 @@
+MONGO_URI = "mongodb+srv://deepakjanapa:admin@sharedclustermrs.ilmrq.mongodb.net/mrs_DB?retryWrites=true&w=majority&appName=SharedClusterMRS"
