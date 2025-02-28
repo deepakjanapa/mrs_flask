@@ -1,0 +1,6 @@
+Flask
+pymongo
+werkzeug
+pandas
+pickle5  # If using Python 3.8+, otherwise just 'pickle'
+requests

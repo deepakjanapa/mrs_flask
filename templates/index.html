@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Recommendation System</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/recommend">Recommendation</a></li>
+        <li><a href="/popular">Popular Movies</a></li>
+        {% if session.get('user') %}
+        <li><a href="/logout">Logout</a></li>
+        {% else %}
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+
+    <div class="container">
+      <h1>Movie Recommendation System</h1>
+
+      <!-- Displaying Random Movies -->
+      <div class="recommendations">
+        {% for movie in random_movies %}
+        <div class="movie">
+          <img src="{{ movie.poster }}" alt="{{ movie.title }}" />
+          <p>{{ movie.title }}</p>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- Link to Recommendation page -->
+      <a href="/recommend" class="button">Go to Movie Recommendations</a>
+    </div>
+
+    <footer>
+      <p>© 2024 Movie Recommendation System</p>
+    </footer>
+  </body>
+</html>
