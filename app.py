@@ -15,18 +15,10 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 import urllib.parse  # For URL encoding
 
-# Encode password if it has special characters
-password = urllib.parse.quote("admin")  # Replace with actual password
-
-# Correct connection URI with the encoded password
-uri = f"mongodb+srv://deepakjanapa:{password}@sharedclustermrs.ilmrq.mongodb.net/mrs_DB?retryWrites=true&w=majority&appName=SharedClusterMRS"
-
-# Create a new client and connect to the server
-client = MongoClient(uri, server_api=ServerApi('1'))
-
-# Select database and collection
-db = client["mrs_DB"]  # Change "mrs_DB" to your actual database name
-users_collection = db["users"]  # Change "users" to your actual collection name
+MONGO_URI = os.getenv("MONGO_URI")
+client = MongoClient(MONGO_URI)
+db = client.get_database("your_database_name")
+collection = db["your_collection_name"]
 
 # Test connection
 try:
